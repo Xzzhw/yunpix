@@ -1,7 +1,7 @@
 <template>
   <div class="picture-list">
     <!-- 图片列表 -->
-    <a-list :grid="{ gutter: 15, xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }" :data-source="dataList" :loading="loading"
+    <a-list :grid="{ gutter: 15, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 6 }" :data-source="dataList" :loading="loading"
       style="margin-bottom: 10px">
       <template #renderItem="{ item: picture }">
         <a-list-item style="padding: 0" :key="picture.id">

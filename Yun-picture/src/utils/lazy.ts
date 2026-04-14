@@ -39,7 +39,7 @@ const getObserver = (rootMargin: string = '100px') => {
         }
       })
     },
-    { rootMargin },
+    { rootMargin, threshold: GLOBAL_DEFAULTS.threshold },
   )
   observerPool.set(rootMargin, newObserver)
   return newObserver
