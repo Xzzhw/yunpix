@@ -3,6 +3,7 @@ const DEV_BASE_URL = 'http://localhost:8123'
 const PROD_BASE_URL = 'http://49.232.51.24'
 const myAxios: AxiosInstance = axios.create({
   // baseURL: PROD_BASE_URL,
+  //测试线上地址
   baseURL: 'https://yumpixhub.asia',
   // baseURL: DEV_BASE_URL,
 
