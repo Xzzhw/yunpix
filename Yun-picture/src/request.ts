@@ -2,8 +2,10 @@ import axios, { type AxiosInstance } from 'axios'
 const DEV_BASE_URL = 'http://localhost:8123'
 const PROD_BASE_URL = 'http://49.232.51.24'
 const myAxios: AxiosInstance = axios.create({
-  baseURL: PROD_BASE_URL,
+  // baseURL: PROD_BASE_URL,
+  baseURL: 'https://yumpixhub.asia',
   // baseURL: DEV_BASE_URL,
+
   timeout: 60000,
   //是否需要登陆凭证
   withCredentials: true,
