@@ -72,7 +72,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, reactive, h, watchEffect, watch, computed } from 'vue'
+import { onMounted, ref, reactive, h, watchEffect, watch, computed,defineAsyncComponent } from 'vue'
 import { getSpaceVoByIdUsingGet } from '@/api/spaceController.ts'
 import { searchPictureByColorUsingPost } from '@/api/pictureController.ts'
 import { message } from 'ant-design-vue'
@@ -82,13 +82,22 @@ import {
 } from '@/api/pictureController'
 import { useLoginUserstore } from '@/stores/useLoginUserstore'
 import { formatSize } from '@/utils'
-import PictureList from '@/components/PictureList.vue'
 import PictureSearchForm from '@/components/PictureSearchForm.vue'
-import { ColorPicker } from 'vue3-colorpicker'
 import 'vue3-colorpicker/style.css'
-import BatchEditPictureModal from '@/components/BatchEditPictureModal.vue'
-import { BarChartOutlined, EditOutlined, TeamOutlined } from '@ant-design/icons-vue'
+// import { ColorPicker } from 'vue3-colorpicker'
+// import PictureList from '@/components/PictureList.vue'
+// import BatchEditPictureModal from '@/components/BatchEditPictureModal.vue'
+import { BarChartOutlined,TeamOutlined } from '@ant-design/icons-vue'
 import { SPACE_TYPE_MAP, SPACE_PERMISSION_ENUM } from '@/constants/sapce'
+const PictureList = defineAsyncComponent(
+  () => import('@/components/PictureList.vue')
+)
+const BatchEditPictureModal = defineAsyncComponent(
+  () => import('@/components/BatchEditPictureModal.vue')
+)
+const ColorPicker = defineAsyncComponent(
+  () => import('vue3-colorpicker').then((module) => ({ default: module.ColorPicker }))
+)
 interface Props {
   id: string | number
 }

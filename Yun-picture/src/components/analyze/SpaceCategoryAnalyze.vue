@@ -8,14 +8,12 @@
 
 <script setup lang="ts">
 import { ref, watchEffect, computed } from 'vue'
-import VChart from 'vue-echarts'
-// ✅ ECharts 已在 main.ts 中统一注册，无需重复导入
 import { message } from 'ant-design-vue'
 import { getSpaceCategoryAnalyzeUsingPost } from '@/api/spaceAnalyzeController'
 interface Props {
   queryAll?: boolean
   queryPublic?: boolean
-  spaceId: number
+  spaceId?: number
 }
 const props = withDefaults(defineProps<Props>(), {
   queryAll: false,

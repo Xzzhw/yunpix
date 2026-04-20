@@ -73,7 +73,9 @@
 import { h, ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { LogoutOutlined, GatewayOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
-import { message, type MenuProps } from 'ant-design-vue'
+// ✅ 正确写法：直接指向具体的文件路径
+import  message  from 'ant-design-vue/es/message'
+import type { MenuProps } from 'ant-design-vue/es/menu'
 import { useLoginUserstore } from '@/stores/useLoginUserstore'
 import { userLogoutUsingPost } from '@/api/userController'
 import ACCESS_ENUM from '@/access/accessEnum'

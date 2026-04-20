@@ -7,8 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import VChart from 'vue-echarts'
-// ✅ ECharts 已在 main.ts 中统一注册，无需重复导入
+
 import { computed, ref, watchEffect } from 'vue'
 import { getSpaceRankAnalyzeUsingPost } from '@/api/spaceAnalyzeController.ts'
 import { message } from 'ant-design-vue'

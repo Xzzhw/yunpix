@@ -1,13 +1,14 @@
-/**
- * ECharts 按需引入配置
- * 集中注册所有需要的图表类型、组件和渲染器
- */
+// src/utils/echarts.ts
+
 import { use } from 'echarts/core'
+
+// 渲染器
 import { CanvasRenderer } from 'echarts/renderers'
 
-// 图表类型
+// 图表
 import { BarChart, LineChart, PieChart } from 'echarts/charts'
-
+// 注册词云图（side effect import，自动注册到 echarts）
+import 'echarts-wordcloud'
 // 组件
 import {
   TitleComponent,
@@ -16,22 +17,21 @@ import {
   GridComponent,
 } from 'echarts/components'
 
-// 注册必须的模块
+// 关键：只注册用到的
 use([
-  // 渲染器
   CanvasRenderer,
-  
-  // 图表类型
-  BarChart,    // 柱状图
-  LineChart,   // 折线图
-  PieChart,    // 饼图
-  
-  // 组件
+  BarChart,
+  LineChart,
+  PieChart,
   TitleComponent,
   TooltipComponent,
   LegendComponent,
   GridComponent,
 ])
 
-// 词云图需要单独导入（第三方扩展）
-import 'echarts-wordcloud'
+// 👇 用 VChart（推荐命名）
+import VChart from 'vue-echarts'
+
+
+// 👇 只导出组件（不要导出 echarts 实例）
+export default VChart

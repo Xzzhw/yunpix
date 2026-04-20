@@ -42,19 +42,35 @@
 </template>
 
 <script setup lang="ts">
-import SpaceCategoryAnalyze from '@/components/analyze/SpaceCategoryAnalyze.vue'
-import SpaceRankAnalyze from '@/components/analyze/SpaceRankAnalyze.vue'
-import SpaceSizeAnalyze from '@/components/analyze/SpaceSizeAnalyze.vue'
-import SpaceTagAnalyze from '@/components/analyze/SpaceTagAnalyze.vue'
-import SpaceUsageAnalyze from '@/components/analyze/SpaceUsageAnalyze.vue'
-import SpaceUserAnalyze from '@/components/analyze/SpaceUserAnalyze.vue'
-import { computed } from 'vue'
+import { computed, defineAsyncComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import { useLoginUserstore } from '@/stores/useLoginUserstore'
+
+// 异步导入分析组件（懒加载）
+const SpaceUsageAnalyze = defineAsyncComponent(
+  () => import('@/components/analyze/SpaceUsageAnalyze.vue')
+)
+const SpaceCategoryAnalyze = defineAsyncComponent(
+  () => import('@/components/analyze/SpaceCategoryAnalyze.vue')
+)
+const SpaceTagAnalyze = defineAsyncComponent(
+  () => import('@/components/analyze/SpaceTagAnalyze.vue')
+)
+const SpaceSizeAnalyze = defineAsyncComponent(
+  () => import('@/components/analyze/SpaceSizeAnalyze.vue')
+)
+const SpaceUserAnalyze = defineAsyncComponent(
+  () => import('@/components/analyze/SpaceUserAnalyze.vue')
+)
+const SpaceRankAnalyze = defineAsyncComponent(
+  () => import('@/components/analyze/SpaceRankAnalyze.vue')
+)
+
 const route = useRoute()
 // 空间 id
 const spaceId = computed(() => {
-  return route.query?.spaceId as string
+  const id = route.query?.spaceId
+  return id ? Number(id) : undefined
 })
 
 // 是否查询所有空间

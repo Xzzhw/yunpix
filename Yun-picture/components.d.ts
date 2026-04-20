@@ -75,6 +75,7 @@ declare module 'vue' {
     SpaceTagAnalyze: typeof import('./src/components/analyze/SpaceTagAnalyze.vue')['default']
     SpaceUsageAnalyze: typeof import('./src/components/analyze/SpaceUsageAnalyze.vue')['default']
     SpaceUserAnalyze: typeof import('./src/components/analyze/SpaceUserAnalyze.vue')['default']
+    TagWordCloud: typeof import('./src/components/analyze/TagWordCloud.vue')['default']
     UrlPictureUpload: typeof import('./src/components/UrlPictureUpload.vue')['default']
   }
 }

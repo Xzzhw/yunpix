@@ -137,6 +137,7 @@ const router = createRouter({
       component: () => import('@/pages/SpaceDetailPage.vue'),
       props: true,
       meta: {
+        prefetch: false ,
         title: '空间详细',
         hide: true,
       },
