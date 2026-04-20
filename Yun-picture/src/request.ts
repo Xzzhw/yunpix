@@ -2,6 +2,7 @@ import axios, { type AxiosInstance, type InternalAxiosRequestConfig, type AxiosR
 import { message } from 'ant-design-vue'
 
 const DEV_BASE_URL = 'http://localhost:8123'
+// const PROD_BASE_URL = 'http://49.232.51.24'
 
 const myAxios: AxiosInstance = axios.create({
   // baseURL: PROD_BASE_URL,
@@ -31,26 +32,13 @@ myAxios.interceptors.request.use(
 // 添加响应拦截器
 myAxios.interceptors.response.use(
   function (response: AxiosResponse) {
-    const res = response.data
-    
     // 开发环境打印响应信息
     if (import.meta.env.DEV) {
-      console.log('[Response]', response.config.url, res)
+      console.log('[Response]', response.config.url, response.data)
     }
 
-    // 如果后端返回的是标准格式 { code, data, message }
-    if (res && typeof res === 'object' && 'code' in res) {
-      // 假设后端成功码为 0 或 200,根据实际情况调整
-      if (res.code !== 0 && res.code !== 200) {
-        message.error(res.message || '请求失败')
-        return Promise.reject(new Error(res.message || '请求失败'))
-      }
-      // 返回业务数据
-      return res.data
-    }
-
-    // 如果不是标准格式,直接返回整个响应数据
-    return res
+    // 直接返回完整响应对象,不做任何数据处理
+    return response
   },
   function (error) {
     // 超出 2xx 范围的状态码都会触发该函数
